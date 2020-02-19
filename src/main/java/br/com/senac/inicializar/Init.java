@@ -41,7 +41,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		professorService.salvar(prof);
 		
 		Professor prof2 = new Professor();
-		prof2.setNome("Samu");
+		prof2.setNome("Luigi");
 		professorService.salvar(prof2);
 		
 		Professor prof3 = new Professor();
