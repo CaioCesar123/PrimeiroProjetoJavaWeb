@@ -4,6 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta http-equiv="Content-type" content="text/html; charset-8" />
+<meta charset="utf-8"/>
 <meta name="viewport" content="width=divice-width" />
 <title>Alterar Aluno</title>
 <link rel="stylesheet"
@@ -11,22 +12,35 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 </head>
 <body>
-<div class="container">
-<div class="panel-heading" align="center"><strong>ALTERAÇÃO ALUNOS</strong>
-</div>
-<div class="panel-body">
-<form class="form-horizontal" th:object="${aluno}" th:action="@{/aluno/alterar}" method="post" style="margin: 10px">
-<div class="form-group">
-<fieldset>
-<div class="form-group row">
-<label>ID</label>
-<!--<input type>-->
-</div>
-</fieldset>
-</div>
-</form>
-</div>
-</div>
+	<div class="container">
+		<div class="panel-heading" align="center">
+			<strong>ALTERAÇÃO ALUNOS</strong>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" th:object="${aluno}"
+				th:action="@{/aluno/alterar}" method="post" style="margin: 10px">
+				<div class="form-group">
+					<fieldset>
+						<div class="form-group row">
+							<label>ID</label> <input type="text"
+								class="form-control input-sm" id="id" th:field="*{id}"
+								readonly="readonly" />
+						</div>
+						<div class="form-group row">
+							<label>NOME</label> <input type="text"
+								class="form-control input-sm" th:field="*{nome}"
+								autofocus="autofocus" placeholder="Informe o nome"
+								maxlength="50" />
+						</div>
+					</fieldset>
+				</div>
+				<div align="center">
+					<button type="submit" class="btn btn-sm btn-success">SALVAR</button>
+					<a th:href="@{/aluno/ListarAlunos}" class="btn btn-sm btn-default">CENCELAR</a>
+				</div>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>

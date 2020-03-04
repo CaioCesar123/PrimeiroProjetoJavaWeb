@@ -28,5 +28,16 @@ public class AlunoService {
 		Optional<Aluno> aluno = repoAluno.findById(id);
 		return aluno.orElseThrow(() -> new ObjectNotFoundException("Aluno não encontrado. id: " + id));
 	}
+	
+	public Aluno salvarAlteracao(Aluno alunoAlterado) throws ObjectNotFoundException{
+		Aluno aluno = buscarPorID(alunoAlterado.getId());
+		aluno.setId(alunoAlterado.getId());
+		aluno.setNome(alunoAlterado.getNome());
+		return salvar(aluno);
+	}
+	
+	public void excluir(Integer id) {
+		repoAluno.deleteById(id);
+	}
 
 }

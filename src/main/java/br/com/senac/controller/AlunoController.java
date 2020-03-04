@@ -45,4 +45,10 @@ public class AlunoController {
 		mv.addObject("aluno", alunoService.buscarPorID(idAluno));
 		return mv;
 	}
+	
+	@PostMapping("/alterar")
+	public ModelAndView alterar(Aluno alunoAlterado) throws ObjectNotFoundException{
+		alunoService.salvarAlteracao(alunoAlterado);
+		return listarTodosAlunos();
+	}
 }
