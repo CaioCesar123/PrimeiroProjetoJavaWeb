@@ -51,4 +51,9 @@ public class AlunoController {
 		alunoService.salvarAlteracao(alunoAlterado);
 		return listarTodosAlunos();
 	}
+	@GetMapping("/excluir/{id}")
+	public ModelAndView excluirAluno(@PathVariable("id") Integer id) {
+		alunoService.excluir(id);
+		return listarTodosAlunos();
+	}
 }
