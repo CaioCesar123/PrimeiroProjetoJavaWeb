@@ -10,8 +10,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Professor implements Serializable {
-	
-	private static final long serialVersionUID = -1802821701243022043L;
+
+	private static final long serialVersionUID = 1888891549045983467L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

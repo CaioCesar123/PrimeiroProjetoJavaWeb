@@ -8,8 +8,14 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import br.com.senac.domain.Aluno;
+import br.com.senac.domain.Carro;
+import br.com.senac.domain.Chave;
+import br.com.senac.domain.Documento;
 import br.com.senac.domain.Professor;
 import br.com.senac.service.AlunoService;
+import br.com.senac.service.CarroService;
+import br.com.senac.service.ChaveService;
+import br.com.senac.service.DocumentoService;
 import br.com.senac.service.ProfessorService;
 
 @Component
@@ -20,6 +26,15 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	
 	@Autowired
 	ProfessorService professorService;
+	
+	@Autowired
+	ChaveService chaveService;
+	
+	@Autowired
+	CarroService carroService;
+	
+	@Autowired
+	DocumentoService documentoService;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -48,9 +63,29 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		prof3.setNome("Mario");
 		professorService.salvar(prof3);
 		
+		Chave chave1 = new Chave();
+		chave1.setCodigo("123221");
+		chaveService.save(chave1);
+		
+		Carro carro1 = new Carro();
+		carro1.setPlaca("123UC");
+		carroService.save(carro1);
+		
+		Documento doc1 = new Documento();
+		doc1.setNumeroDoc("HG321");
+		documentoService.save(doc1);
+		
+		List<Carro> listaCarro = carroService.ProcurarCarro();
+		
+		List<Documento> listaDoc = documentoService.ProcurarDocumento();
+		
+		List<Chave> listarChave = chaveService.ProcurarChaves();
+		
 		List<Professor> listarProfessors = professorService.buscartodosProfessor();
 		
 		List<Aluno> listarAlunos = alunoService.buscarTodosAlunos();
+		
+		
 		
 		
 		for(Aluno aluno:listarAlunos) {
