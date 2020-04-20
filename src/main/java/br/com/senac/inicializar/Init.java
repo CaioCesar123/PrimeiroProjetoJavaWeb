@@ -49,6 +49,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
+		
 		Aluno aluno1 = new Aluno();
 		aluno1.setNome("Caio");
 		alunoService.salvar(aluno1);
@@ -77,11 +78,6 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		chave1.setCodigo("123221");
 		chaveService.save(chave1);
 		
-		Carro carro1 = new Carro();
-		carro1.setPlaca("123UC");
-		carro1.setChave(chave1);
-		carroService.save(carro1);
-		
 		Documento doc1 = new Documento();
 		doc1.setNumeroDoc("HG321");
 		documentoService.save(doc1);
@@ -94,6 +90,16 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		acs1.setNome("RADIO");
 		acessoService.save(acs1);
 		
+		List<Acessorio> listarAcessorio = acessoService.ProcurarAcessorio();
+		
+		Carro carro1 = new Carro();
+		carro1.setPlaca("123UC");
+		carro1.setChave(chave1);
+		carro1.setDocumento(doc1);
+		carro1.setFabricante(fab1);
+		carro1.setAcessorio(listarAcessorio);
+		carroService.save(carro1);
+		
 		List<Carro> listaCarro = carroService.ProcurarCarro();
 		
 		List<Documento> listaDoc = documentoService.ProcurarDocumento();
@@ -105,8 +111,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		List<Aluno> listarAlunos = alunoService.buscarTodosAlunos();
 		
 		List<Fabricante> listarFabricante = fabService.AcharTodos();
-		
-		List<Acessorio> listarAcessorio = acessoService.ProcurarAcessorio();
+	
 		
 		
 		/*for(Aluno aluno:listarAlunos) {
